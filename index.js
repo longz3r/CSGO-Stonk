@@ -22,7 +22,7 @@ async function checkFile() {
     dataFileState = await checkFileExists("C:\\LongDevs\\csgo_stonk.txt")
     if (dataFileState) {
         console.log(clc.green("Data file found!"))
-        console.log("Press Ctrl+c to exit")
+        
     } else {
         if (!fs.existsSync("C:\\LongDevs")){
             fs.mkdirSync("C:\\LongDevs");
@@ -35,6 +35,7 @@ async function checkFile() {
     // configFileState = await checkFileExists("C:\\LongDevs\\csgo_stonk.txt")
 }
 
+
 var totalInvestment = 0;
 var totalCurrentPrice = 0;
 
@@ -45,18 +46,26 @@ async function SteamMarketRequest(rawItemName, boughtPrice, amount) {
     .then(res => {
         let data = res.data
         if (data.success) {
+            console.log("\n")
             let lowestPrice = data.lowest_price
-            // let medianPrice = data.median_price
-            // let volume = data.volume
             console.log(`(${amount}) ${clc.cyan(rawItemName)}`)
-            console.log(`${clc.greenBright("Current price:")} ${lowestPrice}`)
-            // console.log(`${clc.yellow("Average Price:")} ${medianPrice}`)
-            console.log(`${clc.green("Bought price:")} ${boughtPrice}₫`)
-            console.log(`${clc.green("Total invested in this item")} ${boughtPrice * amount}₫`)
-            totalInvestment += boughtPrice*amount
+            console.log(`${clc.yellow("Current price:")} ${lowestPrice}`)
+            console.log(`${clc.yellow("Bought price:")} ${boughtPrice}₫`)
+
+            //remove unwanted chracter in price string
             lowestPrice = lowestPrice.replace(".", "")
             lowestPrice = lowestPrice.replace(",", ".")
-            lowestPrice = parseInt(lowestPrice)
+            lowestPrice = parseFloat(lowestPrice).toFixed(2)
+
+            let stonk = (lowestPrice - boughtPrice) * amount
+            stonk = parseFloat(stonk).toFixed(2)
+            if (stonk >= 0) {
+                console.log(`${clc.greenBright("You made")} ${stonk}₫ ${clc.greenBright("total in this item(s)")}`)
+            } else if (stonk < 0) {
+                console.log(`${clc.redBright("You lost")} ${stonk}₫ ${clc.redBright("total in this item(s)")}`)
+            }
+
+            totalInvestment += boughtPrice*amount
             totalCurrentPrice += lowestPrice*amount
         }
     })
@@ -77,16 +86,30 @@ async function main() {
 
     await file.on('line', (line) => {
         let args = line.split(";")
+
+        //remove unwated characters in string
         let boughtPrice = args[1].replace("₫", "")
         boughtPrice = boughtPrice.replace(".", "")
         boughtPrice = boughtPrice.replace(",", ".")
-        boughtPrice = parseInt(boughtPrice)
+        boughtPrice = parseFloat(boughtPrice).toFixed(2)
         SteamMarketRequest(args[0], boughtPrice, args[2])
     });
 
     await setTimeout(() => {
-        console.log(`${clc.green(`STONK: ${totalCurrentPrice - totalInvestment}₫`)}`)
+        //wait 2s because it take some time to do API request
+        console.log(clc.cyanBright("---------------------------------------------"))
+        console.log(`${clc.green("Total investment:")} ${totalInvestment}₫`)
+        console.log(`${clc.green("Current value: ")} ${totalCurrentPrice}₫`)
+        let stonk = totalCurrentPrice - totalInvestment
+        stonk = parseFloat(stonk).toFixed(2)
+        if (stonk >= 0) {
+            console.log(`${clc.greenBright("You made")} ${stonk}₫ ${clc.greenBright("in total.")}`)
+        } else if (stonk < 0) {
+            console.log(`${clc.redBright("You lost")} ${stonk}₫ ${clc.redBright("in total.")}`)
+        }
+        console.log("Press Ctrl+c to exit")
     }, 2000)
+    
 }
 
 main()
