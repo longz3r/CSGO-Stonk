@@ -49,9 +49,9 @@ async function SteamMarketRequest(rawItemName, boughtPrice, amount) {
             // let medianPrice = data.median_price
             // let volume = data.volume
             console.log(`(${amount}) ${clc.cyan(rawItemName)}`)
-            console.log(`${clc.greenBright("Current Price:")} ${lowestPrice}`)
+            console.log(`${clc.greenBright("Current price:")} ${lowestPrice}`)
             // console.log(`${clc.yellow("Average Price:")} ${medianPrice}`)
-            console.log(`${clc.green("You bought this at:")} ${boughtPrice}₫`)
+            console.log(`${clc.green("Bought price:")} ${boughtPrice}₫`)
             console.log(`${clc.green("Total invested in this item")} ${boughtPrice * amount}₫`)
             totalInvestment += boughtPrice*amount
             lowestPrice = lowestPrice.replace(".", "")
@@ -81,7 +81,7 @@ async function main() {
         boughtPrice = boughtPrice.replace(".", "")
         boughtPrice = boughtPrice.replace(",", ".")
         boughtPrice = parseInt(boughtPrice)
-        SteamMarketRequest(args[0], price, args[2])
+        SteamMarketRequest(args[0], boughtPrice, args[2])
     });
 
     await setTimeout(() => {
