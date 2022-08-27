@@ -29,7 +29,8 @@ async function checkFile() {
         }
         fs.writeFileSync('C:\\LongDevs\\csgo_stonk.txt', '');
         console.log(clc.green("Data file created at C:\LongDevs\csgo_stonk.txt"))
-        console.log("For more information on how to write data please read README.md")
+        console.log("For more information on how to write data please go to")
+        console.log("https://github.com/longz3r/CSGO-Stonk#readme")
     }
 
     // configFileState = await checkFileExists("C:\\LongDevs\\csgo_stonk.txt")
@@ -83,7 +84,7 @@ async function main() {
         terminal: false
     });
     
-
+    console.log(clc.green("Making request to Steam API..."))
     await file.on('line', (line) => {
         let args = line.split(";")
 
