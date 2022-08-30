@@ -1,7 +1,25 @@
 {
+  "type": "module",
   "dependencies": {
     "axios": "^0.27.2",
-    "chalk": "^5.0.1",
-    "cli-color": "^2.0.3"
-  }
+    "cli-color": "^2.0.3",
+    "inquirer": "^9.1.0"
+  },
+  "name": "csgo-stonk",
+  "description": "Calculate if you stonk or not into csgo investment",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/longz3r/CSGO-Stonk.git"
+  },
+  "author": "Long Zer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/longz3r/CSGO-Stonk/issues"
+  },
+  "homepage": "https://github.com/longz3r/CSGO-Stonk#readme"
 }
