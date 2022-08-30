@@ -9,7 +9,6 @@ function removeChars(string) {
     string = string.replace(config.currencySign, "")
     string = string.replace(".", "")
     string = string.replace(",", ".")
-    string = parseFloat(string).toFixed(2)
     return string
 }
 

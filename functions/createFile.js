@@ -29,8 +29,6 @@ async function createFile() {
     // if (configFileState) {
         
     // }
-
-    fs.writeFileSync('C:\\LongDevs\\temp.txt', '');
 }
 
 export default createFile
