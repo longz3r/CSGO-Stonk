@@ -15,4 +15,7 @@ example:
 
 Sticker | PGL (Gold) | Stockholm 2021;51.084,47₫;1\
 Antwerp 2022 Legends Sticker Capsule;5.581,11₫;3\
-Sticker | Broken Fang (Holo);15.099,70₫;4
+Sticker | Broken Fang (Holo);15.099,70₫;4\
+AK-47 | Phantom Disruptor (Minimal Wear);192.427,67₫;1\
+Stockholm 2021 Finalists Autograph Capsule;8.898,01₫;1\
+Sticker | Green's Problem;7.301,40₫;1
