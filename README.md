@@ -3,10 +3,11 @@
 
 
 # Instructions
-Data file is located at C:\LongDevs\csgo_stonk.txt
+Data file is located at C:\LongDevs\csgo_stonk_data.txt
 
 write item in this format:\
-ITEM;BOUGHT PRICE;AMOUNT
+ITEM;BOUGHT PRICE;AMOUNT\
+use Add item menu is recommended
 
 currently only support VND price\
 dont put space before or after item otherwise it will be error\
