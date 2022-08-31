@@ -1,5 +1,5 @@
 import createFile from "./functions/createFile.js"
-import menus from "./menus.js"
+import menus from "./menus/home.js"
 
 async function main() {
     await createFile()

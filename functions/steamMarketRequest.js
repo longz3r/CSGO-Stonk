@@ -1,21 +1,18 @@
 import axios from "axios";
 import clc from "cli-color";
-import data from "./readData.js";
 import removeChars from "./removeChars.js"
 import priceFormat from "./priceFormat.js";
 import fs from "fs"
 import readline from "readline"
-import { toNamespacedPath } from "path";
 
 async function steamMarketRequest() {
-    fs.writeFileSync('C:\\LongDevs\\temp.txt', '');
 
     let totalInvestment = 0;
     let totalCurrentValue = 0;
     let stonkTotal = 0
 
     const file = readline.createInterface({
-        input: fs.createReadStream('C:\\LongDevs\\csgo_stonk.txt'),
+        input: fs.createReadStream('C:\\LongDevs\\csgo_stonk_data.txt'),
         output: process.stdout,
         terminal: false
     });

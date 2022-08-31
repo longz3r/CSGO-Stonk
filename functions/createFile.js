@@ -14,13 +14,13 @@ async function createFile() {
     }
 
 
-    let dataFileState = await checkFileExists("C:\\LongDevs\\csgo_stonk.txt")
+    let dataFileState = await checkFileExists("C:\\LongDevs\\csgo_stonk_data.txt")
     if (dataFileState) {
         console.log(clc.green("Data file found!"))
     } else {
         
-        fs.writeFileSync('C:\\LongDevs\\csgo_stonk.txt', '');
-        console.log(clc.green("Data file created at C:\LongDevs\csgo_stonk.txt"))
+        fs.writeFileSync('C:\\LongDevs\\csgo_stonk_data.txt', '');
+        console.log(clc.green("Data file created at C:\LongDevs\csgo_stonk_data.txt"))
         console.log("For more information on how to write data please go to")
         console.log("https://github.com/longz3r/CSGO-Stonk#readme")
     }
